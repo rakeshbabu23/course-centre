@@ -1,22 +1,3 @@
-// const express = require("express");
-// const jwt = require("jsonwebtoken");
-// const cors = require("cors");
-// const Admin = require("./db/models/admin");
-// const Course = require("./db/models/courses");
-// const User = require("./db/models/users");
-// const adminAuth = require("./middlewares/adminAuth");
-// const userAuth = require("./middlewares/userAuth");
-// require("./db/mongoose");
-// const app = express();
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000", // Allow requests from this origin
-//     methods: "GET,POST,DELETE", // Allow specific HTTP methods
-//     allowedHeaders: "Content-Type,Authorization", // Allow specific headers
-//   })
-// );
-// app.use(express.json());
-
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -26,7 +7,7 @@ require("./db/mongoose");
 
 app.use(
   cors({
-    origin: "https://course-centre.netlify.app/",
+    origin: "https://course-centre.netlify.app",
     methods: "GET,POST,DELETE",
     allowedHeaders: "Content-Type,Authorization",
   })
