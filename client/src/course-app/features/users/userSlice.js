@@ -69,10 +69,13 @@ const userSlice = createSlice({
 export function login(email, password, navigate) {
   return async function (dispatch, getState) {
     try {
-      const res = await axios.post("http://localhost:5000/users/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://course-app-ugni.onrender.com/users/login",
+        {
+          email,
+          password,
+        }
+      );
       localStorage.setItem("token", res.data.token);
       dispatch({ type: "user/assigningUsername", payload: res.data.username });
       navigate("/users/dashboard");
@@ -112,11 +115,14 @@ export function login(email, password, navigate) {
 export function signup(username, email, password, navigate) {
   return async function (dispatch, getState) {
     try {
-      const res = await axios.post("http://localhost:5000/users/signup", {
-        username,
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://course-app-ugni.onrender.com/users/signup",
+        {
+          username,
+          email,
+          password,
+        }
+      );
       localStorage.setItem("token", res.data.token);
       dispatch({ type: "user/assigningUsername", payload: res.data.username });
       navigate("/users/dashboard");
@@ -161,7 +167,7 @@ export function listAllCoursesForUser(searchQuery, price, navigate) {
     try {
       dispatch({ type: "user/loading" });
       const res = await axios.get(
-        `http://localhost:5000/users/courses?title=${searchQuery}&price=${price}`,
+        `https://course-app-ugni.onrender.com/users/courses?title=${searchQuery}&price=${price}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -202,7 +208,7 @@ export function courseDetails(courseId, navigate) {
     dispatch({ type: "user/loading" });
     try {
       const res = await axios.get(
-        `http://localhost:5000/users/courses/${courseId}`,
+        `https://course-app-ugni.onrender.com/users/courses/${courseId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -255,7 +261,7 @@ export function buyCourse(courseId, navigate) {
     dispatch({ type: "user/loading" });
     try {
       const res = await axios.post(
-        `http://localhost:5000/users/courses/${courseId}`,
+        `https://course-app-ugni.onrender.com/users/courses/${courseId}`,
         {},
         {
           headers: {
@@ -308,7 +314,7 @@ export function purchasedCourses(navigate) {
     dispatch({ type: "user/loading" });
     try {
       const res = await axios.get(
-        "http://localhost:5000/users/courses/purchasedCourses",
+        "https://course-app-ugni.onrender.com/users/courses/purchasedCourses",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -366,7 +372,7 @@ export function payment(navigate) {
   return async function (dispatch, getState) {
     try {
       const res = await axios.post(
-        "http://localhost:5000/users/payments",
+        "https://course-app-ugni.onrender.com/users/payments",
         {},
         {
           headers: {

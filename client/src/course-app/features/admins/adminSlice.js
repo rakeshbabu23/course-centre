@@ -49,11 +49,14 @@ const adminSlice = createSlice({
 export function signup(username, email, password, navigate) {
   return async function (dispatch, getState) {
     try {
-      const res = await axios.post("http://localhost:5000/admin/signup", {
-        username,
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://course-app-ugni.onrender.com/admin/signup",
+        {
+          username,
+          email,
+          password,
+        }
+      );
       localStorage.setItem("token", res.data.token);
       dispatch({ type: "admin/assigningUsername", payload: res.data.username });
       navigate("/admin/dashboard");
@@ -87,10 +90,13 @@ export function signup(username, email, password, navigate) {
 export function login(email, password, navigate) {
   return async function (dispatch, getState) {
     try {
-      const res = await axios.post("http://localhost:5000/admin/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://course-app-ugni.onrender.com/admin/login",
+        {
+          email,
+          password,
+        }
+      );
       //msg,username,token
       localStorage.setItem("token", res.data.token);
       console.log(email);
@@ -135,7 +141,7 @@ export function listAllCourses(navigate) {
     try {
       dispatch({ type: "admin/loading" });
       const res = await axios.get(
-        "http://localhost:5000/admin/courses",
+        "https://course-app-ugni.onrender.com/admin/courses",
 
         {
           headers: {
@@ -169,7 +175,7 @@ export function addCourse(
   return async function (dispatch, getState) {
     try {
       const res = await axios.post(
-        "http://localhost:5000/admin/courses",
+        "https://course-app-ugni.onrender.com/admin/courses",
         {
           title,
           description,
@@ -223,7 +229,7 @@ export function editCourse(
     if (!token) navigate("/admin/login");
     try {
       const res = await axios.post(
-        "http://localhost:5000/admin/courses/" + id,
+        "https://course-app-ugni.onrender.com/admin/courses/" + id,
         {
           title,
           description,
