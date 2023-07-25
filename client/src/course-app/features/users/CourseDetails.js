@@ -50,11 +50,6 @@ export default function CourseDetails() {
           <nav className={styles.nav}>
             <Navbar display={true}>
               <div className={styles["form-box"]}>
-                <input
-                  type="text"
-                  className={styles["navbar-input-box"]}
-                  placeholder="Search..."
-                ></input>
                 <button
                   className={styles["log-out-btn"]}
                   onClick={handleLogout}
