@@ -86,7 +86,6 @@ router.post("/courses", adminAuth, async (req, res) => {
   }
 });
 
-console.log("i am in adminroutes");
 router.get("/courses", adminAuth, async (req, res) => {
   try {
     const courses = await Course.find({}).populate("owner", "email");
