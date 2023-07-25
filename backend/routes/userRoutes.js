@@ -68,7 +68,7 @@ router.get("/courses", userAuth, async (req, res) => {
       const filteredCourses = courses.filter(
         (course) =>
           course.title
-            .toLocaleLowerCase()
+            .toLowerCase()
             .includes(req.query.title.split(" ").join("")) &&
           course.price <= cost
       );
