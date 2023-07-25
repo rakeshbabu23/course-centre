@@ -26,7 +26,7 @@ require("./db/mongoose");
 
 app.use(
   cors({
-    origin: "http://localhost:3001",
+    origin: "https://course-centre.netlify.app/",
     methods: "GET,POST,DELETE",
     allowedHeaders: "Content-Type,Authorization",
   })
