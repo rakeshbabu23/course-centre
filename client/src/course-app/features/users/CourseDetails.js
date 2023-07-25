@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../../Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import { courseDetails, buyCourse } from "./userSlice";
+import { courseDetails, buyCourse, isUserLoggedOut } from "./userSlice";
+
 import { MoonLoader } from "react-spinners";
 import styles from "./CourseDetails.module.css";
 
@@ -15,7 +16,6 @@ export default function CourseDetails() {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
-  console.log(user);
 
   useEffect(
     function () {
@@ -25,6 +25,7 @@ export default function CourseDetails() {
   );
   function handleLogout() {
     localStorage.removeItem("token");
+    dispatch(isUserLoggedOut());
     navigate("/users/login");
   }
 

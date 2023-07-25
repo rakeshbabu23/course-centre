@@ -22,7 +22,6 @@ export default function Signup() {
     });
   }, []);
   useEffect(() => {
-    console.log("in persist effect");
     const handleBackNavigation = (event) => {
       if (admin.isAdminLoggedOut) {
         navigate("/home");

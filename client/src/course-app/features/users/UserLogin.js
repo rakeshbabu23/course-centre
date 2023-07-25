@@ -12,23 +12,6 @@ export default function UserLogin() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
-  // function handleUserLogin() {
-  //   if (email === "" || password === "") setUserLoginError(true);
-  //   console.log(email);
-
-  //   axios
-  //     .post("http://localhost:5000/users/login", { email, password })
-  //     .then((res) => {
-  //       console.log(res.data.token);
-  //       localStorage.setItem("token", res.data.token);
-  //       navigate("/users/dashboard");
-  //     })
-  //     .catch((e) => {
-  //       if (e.response && e.response.status === 401) {
-  //         setUserLoginError((userLoginError) => !userLoginError);
-  //       }
-  //     });
-  // }
   useEffect(function () {
     dispatch({
       type: "user/status",
@@ -36,7 +19,6 @@ export default function UserLogin() {
     });
   }, []);
   useEffect(() => {
-    console.log("in persist effect");
     const handleBackNavigation = (event) => {
       if (user.isUserLoggedOut) {
         navigate("/home");
@@ -44,7 +26,7 @@ export default function UserLogin() {
       }
     };
     window.addEventListener("popstate", handleBackNavigation);
-  });
+  }, []);
   function handleUserLogin() {
     dispatch(login(email, password, navigate));
   }

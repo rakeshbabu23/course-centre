@@ -51,7 +51,6 @@ const userSlice = createSlice({
       state.isLoading = false;
     },
     timerCount(state, action) {
-      console.log("timer" + state.count);
       if (state.count >= 0) state.count = state.count - 1;
     },
     resetTimer(state, action) {
@@ -69,13 +68,10 @@ const userSlice = createSlice({
 export function login(email, password, navigate) {
   return async function (dispatch, getState) {
     try {
-      const res = await axios.post(
-        "https://course-app-ugni.onrender.com/users/login",
-        {
-          email,
-          password,
-        }
-      );
+      const res = await axios.post("http://localhost:5001/users/login", {
+        email,
+        password,
+      });
       localStorage.setItem("token", res.data.token);
       dispatch({ type: "user/assigningUsername", payload: res.data.username });
       navigate("/users/dashboard");
@@ -115,14 +111,11 @@ export function login(email, password, navigate) {
 export function signup(username, email, password, navigate) {
   return async function (dispatch, getState) {
     try {
-      const res = await axios.post(
-        "https://course-app-ugni.onrender.com/users/signup",
-        {
-          username,
-          email,
-          password,
-        }
-      );
+      const res = await axios.post("http://localhost:5001/users/signup", {
+        username,
+        email,
+        password,
+      });
       localStorage.setItem("token", res.data.token);
       dispatch({ type: "user/assigningUsername", payload: res.data.username });
       navigate("/users/dashboard");
@@ -153,30 +146,24 @@ export function signup(username, email, password, navigate) {
   };
 }
 
-let counter = 1;
 export function listAllCoursesForUser(searchQuery, price, navigate) {
-  console.log("this is counter" + counter);
-  counter++;
   const token = localStorage.getItem("token");
   if (!token) navigate("/users/login");
-  console.log("query params are" + searchQuery + price);
-  //console.log(typeof price);
-  if (price === "") console.log("hi");
 
   return async function (dispatch, getState) {
     try {
       dispatch({ type: "user/loading" });
       const res = await axios.get(
-        `https://course-app-ugni.onrender.com/users/courses?title=${searchQuery}&price=${price}`,
+        `http://localhost:5001/users/courses?title=${searchQuery}&price=${price}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log("hellooooo" + token);
+
       const courses = res.data.courses;
-      console.log(courses);
+
       if (courses.length === 0)
         dispatch({ type: "user/showAllCourses", payload: [] });
       else dispatch({ type: "user/showAllCourses", payload: res.data.courses });
@@ -208,14 +195,14 @@ export function courseDetails(courseId, navigate) {
     dispatch({ type: "user/loading" });
     try {
       const res = await axios.get(
-        `https://course-app-ugni.onrender.com/users/courses/${courseId}`,
+        `http://localhost:5001/users/courses/${courseId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log(res.data);
+
       dispatch({
         type: "user/requestedCourse",
         payload: {
@@ -261,7 +248,7 @@ export function buyCourse(courseId, navigate) {
     dispatch({ type: "user/loading" });
     try {
       const res = await axios.post(
-        `https://course-app-ugni.onrender.com/users/courses/${courseId}`,
+        `http://localhost:5001/users/courses/${courseId}`,
         {},
         {
           headers: {
@@ -270,7 +257,6 @@ export function buyCourse(courseId, navigate) {
         }
       );
 
-      console.log(res.data.course);
       dispatch({ type: "user/isPaymentDone" });
       navigate("/payment");
     } catch (e) {
@@ -307,14 +293,13 @@ export function buyCourse(courseId, navigate) {
 }
 
 export function purchasedCourses(navigate) {
-  console.log("i am in purchased");
   const token = localStorage.getItem("token");
   if (!token) navigate("/users/login");
   return async function (dispatch, getState) {
     dispatch({ type: "user/loading" });
     try {
       const res = await axios.get(
-        "https://course-app-ugni.onrender.com/users/courses/purchasedCourses",
+        "http://localhost:5001/users/courses/purchasedCourses",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -353,11 +338,10 @@ export function purchasedCourses(navigate) {
   };
 }
 
-let timerInterval; // Declare timerInterval here
+let timerInterval;
 let redirectTimeout;
 
 export function payment(navigate) {
-  console.log("i am in payment");
   const token = localStorage.getItem("token");
   if (!token) {
     // Check if the 'navigate' function is defined and is a function
@@ -372,7 +356,7 @@ export function payment(navigate) {
   return async function (dispatch, getState) {
     try {
       const res = await axios.post(
-        "https://course-app-ugni.onrender.com/users/payments",
+        "http://localhost:5001/users/payments",
         {},
         {
           headers: {
@@ -387,7 +371,6 @@ export function payment(navigate) {
         };
         timerInterval = setInterval(dispatchTimerCount, 1000);
         function navigateToPurchasedCourses() {
-          console.log("celaring the timers");
           clearInterval(timerInterval);
           clearTimeout(redirectTimeout);
           navigate("/users/purchasedCourses");

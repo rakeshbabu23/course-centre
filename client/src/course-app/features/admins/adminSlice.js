@@ -49,14 +49,11 @@ const adminSlice = createSlice({
 export function signup(username, email, password, navigate) {
   return async function (dispatch, getState) {
     try {
-      const res = await axios.post(
-        "https://course-app-ugni.onrender.com/admin/signup",
-        {
-          username,
-          email,
-          password,
-        }
-      );
+      const res = await axios.post("http://localhost:5001/admin/signup", {
+        username,
+        email,
+        password,
+      });
       localStorage.setItem("token", res.data.token);
       dispatch({ type: "admin/assigningUsername", payload: res.data.username });
       navigate("/admin/dashboard");
@@ -90,16 +87,13 @@ export function signup(username, email, password, navigate) {
 export function login(email, password, navigate) {
   return async function (dispatch, getState) {
     try {
-      const res = await axios.post(
-        "https://course-app-ugni.onrender.com/admin/login",
-        {
-          email,
-          password,
-        }
-      );
+      const res = await axios.post("http://localhost:5001/admin/login", {
+        email,
+        password,
+      });
       //msg,username,token
       localStorage.setItem("token", res.data.token);
-      console.log(email);
+
       const username = res.data.username;
       dispatch({ type: "admin/assigningUsername", payload: username });
 
@@ -134,14 +128,13 @@ export function login(email, password, navigate) {
 export function listAllCourses(navigate) {
   const token = localStorage.getItem("token");
   if (!token) navigate("/admin/login");
-  console.log("rendering");
-  console.log("token is " + token);
+
   return async function (dispatch, getState) {
     const token = localStorage.getItem("token");
     try {
       dispatch({ type: "admin/loading" });
       const res = await axios.get(
-        "https://course-app-ugni.onrender.com/admin/courses",
+        "http://localhost:5001/admin/courses",
 
         {
           headers: {
@@ -150,7 +143,6 @@ export function listAllCourses(navigate) {
         }
       );
 
-      console.log("re-rendering");
       dispatch({ type: "admin/listAllCourses", payload: res.data.courses });
     } catch (e) {
       if (e.response) {
@@ -175,7 +167,7 @@ export function addCourse(
   return async function (dispatch, getState) {
     try {
       const res = await axios.post(
-        "https://course-app-ugni.onrender.com/admin/courses",
+        "http://localhost:5001/admin/courses",
         {
           title,
           description,
@@ -229,7 +221,7 @@ export function editCourse(
     if (!token) navigate("/admin/login");
     try {
       const res = await axios.post(
-        "https://course-app-ugni.onrender.com/admin/courses/" + id,
+        "http://localhost:5001/admin/courses/" + id,
         {
           title,
           description,
@@ -243,7 +235,7 @@ export function editCourse(
           },
         }
       );
-      console.log(res.data);
+
       dispatch({ type: "admin/saveEditedCourse" });
     } catch (e) {
       if (e.response) {

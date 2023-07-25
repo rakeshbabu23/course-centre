@@ -21,13 +21,12 @@ export default function UserDashboard() {
     function () {
       let q = searchParam.get("title");
       let p = searchParam.get("price");
-      console.log(p);
+
       if (q === null) q = "";
       if (p === null) p = "";
-      // const k = parseInt(p)
+
       setQuery(q);
       const price = p === "" ? "" : parseInt(p);
-      console.log("price is" + price);
 
       dispatch(listAllCoursesForUser(q, price, navigate));
     },
@@ -36,7 +35,6 @@ export default function UserDashboard() {
 
   useEffect(() => {
     const handlePopstate = () => {
-      console.log(hasQueryParams());
       if (!hasQueryParams()) {
         setFilter(false);
       }
@@ -64,7 +62,7 @@ export default function UserDashboard() {
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       if (query === "") return;
-      //searchParam.set("title", query);
+
       dispatch(listAllCoursesForUser(query, "", navigate));
       if (searchParam.get("price") !== null) {
         navigate(
@@ -73,8 +71,6 @@ export default function UserDashboard() {
       } else {
         navigate(`/users/dashboard?title=${query}`);
       }
-
-      console.log("Search query:", query);
     }
   };
 
@@ -85,9 +81,8 @@ export default function UserDashboard() {
   const handlePriceChange = (event) => {
     const newPrice = parseInt(event.target.value);
     setSelectedPrice(parseInt(event.target.value));
-    console.log("hello1 " + filter + "     " + user.isLoading);
+
     navigate(`/users/dashboard?title=${query}&price=${newPrice}`);
-    console.log("hello2 " + filter + "     " + user.isLoading);
   };
 
   function hasQueryParams() {
@@ -304,6 +299,9 @@ export default function UserDashboard() {
                                 </p>
                                 <p className={styles["course-owner"]}>
                                   {course.owner.username}
+                                </p>
+                                <p className={styles["course-desc"]}>
+                                  ${course.price}
                                 </p>
                               </div>
                             </div>

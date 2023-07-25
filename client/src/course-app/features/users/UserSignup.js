@@ -22,7 +22,6 @@ export default function UserSignup() {
     });
   }, []);
   useEffect(() => {
-    console.log("in persist effect");
     const handleBackNavigation = (event) => {
       if (user.isUserLoggedOut) {
         navigate("/home");
@@ -30,7 +29,7 @@ export default function UserSignup() {
       }
     };
     window.addEventListener("popstate", handleBackNavigation);
-  });
+  }, []);
   function handleUserSignup() {
     dispatch(signup(username, email, password, navigate));
   }
