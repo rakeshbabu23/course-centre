@@ -1,0 +1,97 @@
+.box-container {
+    max-width: 40rem;
+    border-radius: 8px;
+    border: 2px solid black;
+}
+body{
+    font-family: 'Lato', sans-serif;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.login-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+img {
+    /* height: 20rem;
+    width: 20rem;
+    overflow: hidden; */
+    height: 100%;
+        /* Make the image take the full height of the container */
+        width: 100%;
+        /* Make the image take the full width of the container */
+        object-fit: cover;
+}
+
+.image-container {
+    /* height: 20rem;
+    background-size: cover;
+    overflow: hidden;
+    border-right: 2px solid black; */
+    height: 21rem;
+        background-size: cover;
+        overflow: hidden;
+        border-right: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.input-fields {
+    padding: 1rem;
+    align-self: center;
+
+
+}
+
+.input-field {
+    height: 3.2rem;
+    width: 90%;
+    margin-bottom: 1rem;
+    border: none;
+    border-bottom: 2px solid #7950f2;
+    font-size: 1rem;
+}
+
+.input-field:focus {
+    outline: none;
+    background-color: #dbe4ff;
+}
+
+.input-field:focus .input-field::placeholder{
+    color: black;
+
+}
+
+.sign-up-option {
+    margin-top: 0.8rem;
+    font-size: 1rem;
+
+}
+
+.btn {
+    background-color: #7950f2;
+    border: 1px solid white;
+    color: white;
+    font-weight: 400;
+    font-size: 1.2rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 2rem;
+    display: block;
+    cursor: pointer;
+
+
+}
+
+.red-color::placeholder{
+    color:red
+}

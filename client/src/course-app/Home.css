@@ -1,0 +1,58 @@
+.admin-user-cards{
+    width: 800px;
+    height: 100vh;
+  display: flex;
+}
+.container{
+  padding: 2.4rem;
+}
+.home-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  height: 100vh;
+  width: 100vw;
+}
+
+.card-text {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.home-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  height: 100vh;
+  width: 100vw;
+}
+
+.home-card-text {
+  font-size: 2.4rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+
+}
+
+.home-card-btn {
+  align-self: flex-start;
+}
+
+.card {
+  width: 100vw;
+  height: 20rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px #dee2e6;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+}
+
+.home-card-content {
+  padding: 2rem;
+}

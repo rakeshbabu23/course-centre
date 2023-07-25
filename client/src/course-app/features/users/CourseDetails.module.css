@@ -1,0 +1,138 @@
+.container {
+    padding: 0 3.2rem;
+}
+
+.nav {
+    box-shadow: 4px 0 10px #ced4da;
+    padding: 0 3.2rem;
+}
+
+.override {
+    display: block;
+    margin: 0 auto;
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.log-out-btn {
+    font-size: 1rem;
+    border: none;
+    color: black;
+    display: inline-block;
+    background: none;
+    outline: none;
+    padding: 0.5rem;
+    transition: all 0.5s;
+}
+
+.log-out-btn:hover {
+    color: white;
+    background-color: #7950f2;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.navbar-input-box {
+    height: 2rem;
+    width: 15rem;
+    padding: 0.5rem;
+    outline: none;
+    border: 1px solid #7950f2;
+    border-radius: 1.2rem;
+    position: relative;
+}
+
+.navbar-input-box:focus {
+    border: 2px solid #7950f2;
+}
+
+
+.form-box {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.course-details-header{
+    background-color: #212529;
+    height: 20rem;
+    position: relative;
+}
+
+.course-details-title{
+    font-size: 2.4rem;
+    color: white;
+    max-width: 60%;
+}
+
+.course-details-description{
+    font-size: 1.4rem;
+    color:white;
+    max-width: 60%;
+    
+}
+
+.course-details-owner{
+    color:#7950f2;
+    text-transform: capitalize;
+}
+
+.course-img{
+    
+    height: 10rem;
+        width: 18rem;
+}
+
+.course-img-buy-card{
+top: 40%;
+    right: 10%;
+    position: absolute;
+    border:1px solid white;
+    height:15rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 8rem 5rem;
+    gap:2rem;
+}
+
+.course-details-text{
+    display: flex;
+    flex-direction: column;
+    gap:1.2rem;
+    padding: 1.4rem 3.2rem;
+}
+
+.course-buy-container{
+display: flex;
+flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 4px 8px #868e96;
+}
+
+.course-buy-btn{
+    cursor: pointer;
+    display: inline-block;
+    width:90%;
+    background-color: #7950f2;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    outline: none;
+    border: none;
+    
+    padding: 0.8rem 1.6rem;
+}
+
+.purchased{
+    font-size: 1.4rem;
+    color: #7950f2;
+    font-weight: 600;
+   
+}

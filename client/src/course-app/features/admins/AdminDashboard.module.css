@@ -1,0 +1,65 @@
+.container-for-courses{
+    padding: 0.8rem 3.2rem;
+    max-width: 120rem;
+
+}
+
+.log-out-link{
+    font-size: 1rem;
+   border: none;
+    color: black;
+    display: inline-block;
+    background: none;
+    outline: none;
+    padding: 0.5rem;
+        transition: all 0.5s;
+}
+.log-out-link:hover
+ {
+    color: white;
+    background-color: #7950f2;
+    border-radius: 8px;
+    cursor:pointer
+}
+
+.welcome{
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin: 2rem 0;
+}
+
+.course-cards-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    max-width: 120rem;
+    justify-items: center;
+    row-gap: 1.8rem;
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.override {
+    display: block;
+        margin: 0 auto;
+}
+
+.add-course-btn{
+    position: fixed;
+    top:15%;
+    right:8%;
+    background: none;
+    border: none;
+    outline: none;
+    background-color: white;
+    width:3rem;
+    height:3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 10px #f1f3f5;
+}

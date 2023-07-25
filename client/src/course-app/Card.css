@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 62.5%;
+}
+
+.card {
+    width: 100vw;
+    height: 20rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px #dee2e6;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+
+.home-card-content {
+    padding: 2rem;
+}
+
+.link:link,
+.link:visited {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 1.4rem;
+    background-color: #7950f2;
+    padding: 0.6rem 0.8rem;
+    border-radius: 2rem;
+    transition: all 0.1s;
+    opacity: 1;
+}
+
+
+
+
+@keyframes moveUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

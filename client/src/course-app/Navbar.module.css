@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav{
+    background-color: white;
+    display: flex;
+    height: 4rem;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.logo{
+    align-self: center;
+
+}
+.logo h4{
+    font-size: 18px;
+}
+
